@@ -85,13 +85,103 @@
   /*los pseudoelementos adoptaran esta altura*/
   top: 0;
   left: 0;
-  margin-top: 1rem;
+  margin: 1rem 0 0 10px;
   font-family: "Calligraffitti";
   display: none; }
   #navHotel ul {
-    width: 600px;
+    width: 630px;
     /*RESPONSIVE*/
     height: 100%;
     margin: 0 auto; }
     #navHotel ul li a {
       color: #f7f7f7; }
+
+@media screen and (max-width: 1024px) {
+  #contenedor-ppal {
+    background-color: red; }
+
+  #encabezado:before {
+    left: 0;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #000;
+    -webkit-transform: skew(0deg, 5deg);
+    -moz-transform: skew(0deg, 5deg);
+    -ms-transform: skew(0deg, 5deg);
+    transform: skew(0deg, 5deg);
+    width: 40%; }
+  #encabezado:after {
+    right: 0;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #000;
+    -webkit-transform: skew(0deg, -2deg);
+    -moz-transform: skew(0deg, -2deg);
+    -ms-transform: skew(0deg, -2deg);
+    transform: skew(0deg, -2deg);
+    width: 60%; }
+  #encabezado #logo {
+    left: 40%;
+    border-radius: 0 7em; }
+  #encabezado #logo {
+    background-position: 60% center; }
+  #encabezado #eslogan h1 {
+    margin: 0px 0 0 30%;
+    text-shadow: 1px -1px 0 gainsboro, 2px -2px 0 #d2d2d2, 3px -3px 0 #c8c8c8, 4px -4px 10px rgba(0, 0, 0, 0.5); }
+  #encabezado #eslogan h2 {
+    margin: 0px 0 0 55%; } }
+@media screen and (max-width: 768px) {
+  #contenedor-ppal {
+    background-color: green; }
+
+  #encabezado:before {
+    height: 85%;
+    width: 30%; }
+  #encabezado:after {
+    width: 70%;
+    top: 10%;
+    -webkit-transform: skew(0deg, 2deg); }
+  #encabezado #logo {
+    width: 175px;
+    height: 125px;
+    top: 125px;
+    left: 25%;
+    border-radius: 0 6em; }
+  #encabezado #eslogan {
+    visibility: hidden; }
+
+  #navHotel ul {
+    width: 350px;
+    margin-left: 35%; }
+    #navHotel ul li {
+      margin: -5px 0 0 7%; }
+    #navHotel ul li:first-child {
+      display: none; }
+    #navHotel ul li:nth-child(2) {
+      margin-left: 50px; } }
+@media screen and (max-width: 480px) {
+  #contenedor-ppal {
+    background-color: beige; }
+    #contenedor-ppal #encabezado:before {
+      display: none; }
+    #contenedor-ppal #encabezado:after {
+      width: 85%;
+      top: 0%;
+      -webkit-transform: skew(0deg, 0deg); }
+    #contenedor-ppal #encabezado #logo {
+      width: 150px;
+      height: 110px;
+      top: 110px;
+      left: 22%; }
+    #contenedor-ppal #navHotel ul {
+      margin-left: 30%; }
+      #contenedor-ppal #navHotel ul li a {
+        font-size: 1rem; } }

@@ -93,17 +93,156 @@
 	height: 50px;/*los pseudoelementos adoptaran esta altura*/
 	top: 0;
 	left: 0;
-	margin-top: 1rem;
+	margin: 1rem 0 0 10px;
 	font-family: "Calligraffitti";
 	display: none;
 	ul
 	{
-		width: 600px;/*RESPONSIVE*/
+		width: 630px;/*RESPONSIVE*/
 		height: 100%;
 		margin: 0 auto;
 		li a
 		{
 			color: #f7f7f7;
+		}
+	}
+}
+@media screen and (max-width: 1024px){
+	#contenedor-ppal
+	{
+		background-color: red;
+	}
+	#encabezado
+	{
+		&:before
+		{
+			left: 0;
+			@include efectoEncabezado(5, "#000");
+			width: 40%;
+		}
+		&:after
+		{
+			right: 0;
+			@include efectoEncabezado(-2, "#000");
+			width: 60%;
+		}
+		#logo
+		{
+			left: 40%;
+			border-radius: 0 7em;
+		}
+		#logo
+		{
+			background-position: 60% center;
+		}
+		#eslogan
+		{
+			h1
+			{
+				margin: 0px 0 0 30%;
+				text-shadow:
+					1px -1px 0 rgba(220,220,220,1),
+					2px -2px 0 rgba(210,210,210,1),
+					3px -3px 0 rgba(200,200,200,1),
+					4px -4px 10px rgba(0,0,0,0.5);
+			}
+			h2
+			{
+				margin: 0px 0 0 55%;
+			}
+		}
+	}
+}
+@media screen and (max-width: 768px){
+	#contenedor-ppal
+	{
+		background-color: green;
+	}
+	#encabezado
+	{
+		&:before
+		{
+			height: 85%;
+			width: 30%;
+		}
+		&:after
+		{
+			width: 70%;
+			top: 10%;
+			-webkit-transform: skew(0deg, 2deg);
+		}
+		#logo
+		{
+			width: 175px;
+			height: 125px;
+			top: 125px;
+			left: 25%;
+			border-radius: 0 6em;
+		}
+		#eslogan
+		{
+			visibility: hidden;
+		}
+	}
+	#navHotel
+	{
+		ul
+		{
+			width: 350px;
+			margin-left: 35%;
+			li
+			{
+				margin: -5px 0 0 7%;
+			}
+			li:first-child
+			{
+				display: none;
+			}
+			li:nth-child(2)
+			{
+				margin-left:  50px;
+			}
+		}
+	}
+}
+@media screen and (max-width: 480px){
+	#contenedor-ppal
+	{
+		background-color: beige;
+		#encabezado
+		{
+
+			&:before
+			{
+				display: none;
+			}
+			&:after
+			{
+				width: 85%;
+				top: 0%;
+				-webkit-transform: skew(0deg, 0deg);
+			}
+			#logo
+			{
+				width: 150px;
+				height: 110px;
+				top: 110px;
+				left: 22%;
+			}
+		}
+		#navHotel
+		{
+			ul
+			{
+				margin-left: 30%;
+				li
+				{
+					a
+					{
+						font-size: 1rem;
+					}
+				}
+			}
 		}
 	}
 }
