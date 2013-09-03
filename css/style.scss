@@ -34,6 +34,8 @@
 {
 	position: absolute;/*como el #contenedor-ppal (PADRE) NO tiene posicion relativa, su guia-relativa sera el body*/
 	@include fullScreen("blue");
+	background: transparent url("../img/background.png") repeat 100%;
+	background-size: cover;
 	overflow: hidden;
 	top: 0;
 	left: 0;
@@ -47,8 +49,16 @@
 		{
 			display: inline-block;
 			/*siempre se deja un espacio entre los elemnetos que se ponen en inline-block*/
-			margin-right: -4px;
+			position: relative;
 			@include fullScreen("transparent");
+			margin-right: -6px;
+			vertical-align: top;
+			background-size: 100%;
+			background-size: cover;
+			background-position: bottom;
+			/*problema todos los sliders ocuparan el ancho y alto del contenedor padre,
+			si a estos los vamos moviendo el htal,
+			AUN ESTARAN OCUPANDO EL total del contenedor padre, y este se encuentra en el medio*/
 		}
 	}
 }
