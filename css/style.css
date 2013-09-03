@@ -10,6 +10,34 @@
   src: url("../font/Socialico.eot");
   src: url("../font/Socialico.eot") format("embedded-opentype"), url("../font/Socialico.ttf") format("truetype"), url("../font/Socialico.otf"); }
 
+#contenedor-sliders {
+  position: absolute;
+  /*como el #contenedor-ppal (PADRE) NO tiene posicion relativa, su guia-relativa sera el body*/
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: blue;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  /*por detras del encabezado*/ }
+  #contenedor-sliders #img-sliders {
+    /*posicionar todos los elementos hermanos (descendientes directos), uno detras de otro*/
+    white-space: nowrap;
+    height: 100%;
+    /*porque este no tenia fullscreen*/ }
+    #contenedor-sliders #img-sliders .slider {
+      display: inline-block;
+      /*siempre se deja un espacio entre los elemnetos que se ponen en inline-block*/
+      margin-right: -4px;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+
 #encabezado {
   position: fixed;
   width: 100%;
@@ -170,18 +198,21 @@
 @media screen and (max-width: 480px) {
   #contenedor-ppal {
     background-color: beige; }
-    #contenedor-ppal #encabezado:before {
-      display: none; }
-    #contenedor-ppal #encabezado:after {
-      width: 85%;
-      top: 0%;
-      -webkit-transform: skew(0deg, 0deg); }
-    #contenedor-ppal #encabezado #logo {
-      width: 150px;
-      height: 110px;
-      top: 110px;
-      left: 22%; }
+    #contenedor-ppal #encabezado {
+      margin-top: -7rem; }
+      #contenedor-ppal #encabezado:before {
+        display: none; }
+      #contenedor-ppal #encabezado:after {
+        width: 85%;
+        top: 0%;
+        -webkit-transform: skew(0deg, 0deg); }
+      #contenedor-ppal #encabezado #logo {
+        width: 150px;
+        height: 110px;
+        top: 110px;
+        left: 22%; }
     #contenedor-ppal #navHotel ul {
       margin-left: 30%; }
       #contenedor-ppal #navHotel ul li a {
+        color: white;
         font-size: 1rem; } }

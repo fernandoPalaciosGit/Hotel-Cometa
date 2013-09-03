@@ -8,6 +8,14 @@
 	            url("../font/#{$font-face}.otf");
     }
 }
+@mixin fullScreen($color : "aqua")
+{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: unquote($color);
+}
 @mixin efectoEncabezado($grados, $color : "red")/*grupo de reglas css para varios elementos -- pueden recibir parametros opr mixin*/
 {
 	content: "";
@@ -21,6 +29,28 @@
 	-moz-transform: skew(0deg, unquote($grados+"deg"));
 	-ms-transform: skew(0deg, unquote($grados+"deg"));
 	transform: skew(0deg, unquote($grados+"deg"));
+}
+#contenedor-sliders
+{
+	position: absolute;/*como el #contenedor-ppal (PADRE) NO tiene posicion relativa, su guia-relativa sera el body*/
+	@include fullScreen("blue");
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	z-index: -5;/*por detras del encabezado*/
+	#img-sliders
+	{
+		/*posicionar todos los elementos hermanos (descendientes directos), uno detras de otro*/
+		white-space: nowrap;
+		height: 100%;/*porque este no tenia fullscreen*/
+		.slider
+		{
+			display: inline-block;
+			/*siempre se deja un espacio entre los elemnetos que se ponen en inline-block*/
+			margin-right: -4px;
+			@include fullScreen("transparent");
+		}
+	}
 }
 #encabezado
 {
@@ -211,7 +241,7 @@
 		background-color: beige;
 		#encabezado
 		{
-
+			margin-top: -7rem;
 			&:before
 			{
 				display: none;
@@ -239,6 +269,7 @@
 				{
 					a
 					{
+						color: white;
 						font-size: 1rem;
 					}
 				}
