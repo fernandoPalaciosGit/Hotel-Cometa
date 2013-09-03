@@ -1,3 +1,6 @@
+/*variable qu eva almacenando la posicion de nuestro slider*/
+var pos = 0;
+var intv;
 $(document).ready(function(){
 	init();
 });
@@ -18,6 +21,8 @@ var init = function(){
 		$(item).css("width", widthParent+"px");
 		$(item).css("background-image", "url('"+uri+"')");
 	});
+	/*SLIDER ANIMADO POR INTERVALO DE TIEMPO*/
+	intv = setInterval(pasarSlides, 7000);
 
 }
 var pasarSlides = function(){
@@ -25,15 +30,25 @@ var pasarSlides = function(){
 	/*¿se paso por un intervalo (TIEMPO) o por un boton (CLICK)?*/
 	if($(this).closest("#control-sliders").hasClass("pasar-slide")){
 		slideTarget = $(this).index();/*devuelve el indice del array*/
-
+		pos = slideTarget;
+		clearInterval(intv);//resetamos el intervalo en el caso de que le demos click a los enlaces
+		intv = setInterval(pasarSlides, 7000);
+	}else{
+		pos++;
+		if(pos >= $(".slider").length){
+			pos = 0;
+		}
+		slideTarget = pos;
 	}
+	/*ANIMACION DE FUNDIDO*/
 	$("#img-sliders").fadeOut("slow", function(){
 		$(this).animate({
 			"margin-left" : -(slideTarget * $(this).parent().width())+"px"
-		}, "slow", function(){
+		}, "fast", function(){
 			$(this).fadeIn();
 		});
 	});
+
 }
 var rolloverHeader = function(event){
 	if(window.innerWidth <= 480){
