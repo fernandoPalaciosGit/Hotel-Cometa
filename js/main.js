@@ -11,7 +11,8 @@ var init = function(){
 		$("#navHotel").fadeOut();
 	}
 	/*EVENTOS MOUSE*/
-	$("#encabezado").on("mousemove", rolloverHeader);
+	$("#encabezado").on("mousemove", rolloverHeader)
+						 .on("mouseout", navegacion);
 	$("#navHotel a").on("click", navegacion);
 	$("#control-sliders ul li").on("click", pasarSlides);
 	/*ESPECIFICAR LA DIMENSIONES DE CADA SLIDE*/
@@ -23,7 +24,6 @@ var init = function(){
 	});
 	/*SLIDER ANIMADO POR INTERVALO DE TIEMPO*/
 	intv = setInterval(pasarSlides, 7000);
-
 }
 var pasarSlides = function(){
 	var slideTarget = 0;
@@ -54,16 +54,19 @@ var rolloverHeader = function(event){
 	if(window.innerWidth <= 480){
 		return;
 	}
-	if((event.pageX<590 && event.pageX>410 && event.pageY>100) || (event.pageX>590 && event.pageY>50) || (event.pageX<410 && event.pageY>50)){
-		$("#navHotel a").trigger("click");
-	}else{
+	if(event.pageY < 110){
 		$(this).css({"margin-top" : "-7rem"});
 		$("#navHotel").fadeIn();
 		$("#eslogan").fadeOut();
 	}
 }
-var navegacion = function(){
-	$("#encabezado").css({"margin-top" : "-10rem"});
-	$("#navHotel").fadeOut();
-	$("#eslogan").fadeIn();
+var navegacion = function(event){
+	if(window.innerWidth <= 480){
+		return;
+	}
+	if(event.pageY>80){
+		$("#encabezado").css({"margin-top" : "-10rem"});
+		$("#navHotel").fadeOut();
+		$("#eslogan").fadeIn();
+	}
 }

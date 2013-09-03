@@ -126,6 +126,45 @@
 		}
 	}
 }
+#msg-ppal
+{
+	@include fullScreen("transparent");
+	margin-left: -5%;
+	width: 500px;
+	padding-top: 350px;
+	color: #f7f7f7;
+	h1
+	{
+		position: relative;
+		color: #DFEAF3;
+		font-size: 1.5rem;
+		z-index: 5;
+		top: 60px;
+		right: -210px;
+		text-shadow: 0px 0px 20px #2C2C2C, 0px 0px 20px #E2E23F;
+	}
+	#relAuthor
+	{
+		position: relative;
+		font-size: 1rem;
+		font-weight: bolder;
+		opacity: 0.7;
+		&:after
+		{
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			left: 0;
+			top: 0;
+			z-index: -10;
+			margin-top: -21%;
+			border-top: 150px solid transparent;
+			border-left: 300px solid #000;
+			border-bottom: 150px solid transparent;
+		}
+	}
+}
 #navHotel
 {
 	position: fixed;
