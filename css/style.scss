@@ -1,3 +1,4 @@
+$blue:#3e87cc;
 @each $font-face in "BebasNeue", "Socialico"{/*iteramos una misma propiedad CSS*/
     @font-face
     {
@@ -62,6 +63,90 @@
 		}
 	}
 }
+#cuartos{
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: -5;/*por detras del encabezado*/
+}
+#paquetes
+{
+	@include fullScreen("transparent");
+	position: absolute;
+	top: 250%;
+	left: 0;
+	z-index: -5;/*por detras del encabezado*/
+	font-family: "Calligraffitti";
+	border: 1px solid red;
+	background: transparent url("../img/DSCN1332.jpg") repeat 100%;
+	background-size: cover;
+	.oferta/*<article>*/
+	{
+		display: inline-block;
+		position: relative;
+		width: 25%;
+		margin: 15% 0 0 3%;
+		background-color: #F7F7F7;
+		vertical-align: top;
+		padding: 2%;
+		padding-top: 0;
+		text-align: center;
+		border: solid 1px #ccc;
+		&:nth-child(even)
+		{
+			top: -20px;
+		}
+		&:nth-child(odd)
+		{
+			top: 20px;
+		}
+		.ribbon
+		{
+			position: relative;
+			z-index: 0;
+			width: 130%;
+			left: -43px;
+			top: 30px;
+			height: 50px;
+			background-image: url(../img/ribbon.png);
+			background-size: 100% 100%;
+		}
+		.oferta-titulo
+		{
+			position: relative;
+			z-index: 1;
+			top: -18px;
+			font-family: "BebasNeue";
+			font-style: oblique;
+			color: #2B3238;
+			font-size: 1.85rem;
+		}
+		.oferta-desc
+		{
+			text-align: justify;
+			letter-spacing: 1px;
+			word-spacing: 1px;
+			margin: 5% 0;
+		}
+		.oferta-ext
+		{
+			font-weight: bold;
+		}
+		.oferta-precio
+		{
+			background-color: $blue;
+			color: #fff;
+			font-size: 1.25rem;
+			width: 70%;
+			margin: 5% auto;
+			padding: 0.5rem;
+		}
+		.oferta-mas
+		{
+			font-weight: bold;
+		}
+	}
+}
 #encabezado
 {
 	position: fixed;
@@ -93,7 +178,7 @@
 		top: 150px;
 		left: 50%;
 		margin-left: -100px;
-		z-index: 5;
+		z-index: 15;
 		text-indent: -9999px;
 		border-radius: 7em 0;
 	}
@@ -131,21 +216,25 @@
 	@include fullScreen("transparent");
 	margin-left: -5%;
 	width: 500px;
-	padding-top: 350px;
+	padding-top: 325px;
 	color: #f7f7f7;
 	h1
 	{
 		position: relative;
+		z-index: -5;
 		color: #DFEAF3;
 		font-size: 1.5rem;
-		z-index: 5;
-		top: 60px;
-		right: -210px;
+		top: -25px;
+		right: 100px;
 		text-shadow: 0px 0px 20px #2C2C2C, 0px 0px 20px #E2E23F;
+		-webkit-transform: rotate(27deg);
+		-moz-transform: rotate(-45deg);
+		transform: rotate(-45deg);
 	}
 	#relAuthor
 	{
 		position: relative;
+		z-index: 0;
 		font-size: 1rem;
 		font-weight: bolder;
 		opacity: 0.7;
@@ -157,7 +246,7 @@
 			height: 0;
 			left: 0;
 			top: 0;
-			z-index: -10;
+			z-index: -10;/*para que se ponga por detras del elemento padre*/
 			margin-top: -21%;
 			border-top: 150px solid transparent;
 			border-left: 300px solid #000;
@@ -183,6 +272,51 @@
 		li a
 		{
 			color: #f7f7f7;
+		}
+	}
+}
+#control-sliders
+{
+	position: absolute;
+	bottom: 15%;
+	left: 90%;
+	z-index: 0;
+}
+.centerCircle
+{
+	position: absolute;
+	top: 35%;
+	z-index: 5;
+	height: 90px;
+	width: 90px;
+	margin-left: 12px;
+	padding: 50px 50px 60px 31px;
+	font: 1.5em 'Calligraffitti', cursive;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #F7F7F7;
+	text-align: center;
+	border-radius: 100px;
+	left: 40%;
+	left: -webkit-calc(50% - 100px);
+	border: solid 2px #d8d68c;
+}
+.half{
+	display: inline-block;
+	margin-right: -6px;
+	width: 50%;
+	vertical-align: top;
+}
+.halfRooms{
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	z-index: 0;
+	img{
+		-webkit-filter: grayscale(1) blur(2px);
+		transition:all 0.4s;
+		width: 100%;
+		&:hover{
+			-webkit-filter: grayscale(0.2) blur(0px);
 		}
 	}
 }
@@ -282,6 +416,24 @@
 				margin-left:  50px;
 			}
 		}
+	}
+	.centerCircle
+	{
+		position: absolute;
+		border-radius: 0px;
+		top: 0;
+		left: 0;
+		margin-left: 0;
+		width: 100%;
+		height: auto;
+		padding: 5px 0 0 0;
+		letter-spacing: 4px;
+		word-spacing: 10px;
+	}
+	.half{
+		display: block;
+		width: 100%;
+		top: 0px;
 	}
 }
 @media screen and (max-width: 480px){
