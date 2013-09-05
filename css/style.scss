@@ -47,7 +47,7 @@ $blue:#3e87cc;
 		height: 80px;
 		-webkit-border-radius: 50%;
 		border-radius: 50%;
-		transition: all 1s ease-in;
+		transition: all 0.1s ease-out;
 		background-size: 100%;
 		background-position: 50%;
 		cursor: pointer;
@@ -64,6 +64,72 @@ $blue:#3e87cc;
 		border-radius: 0;
 		transition: all 1s ease-in;
 		cursor: auto;
+	}
+}
+#contacto
+{
+	@include fullScreen("red");
+	top: 400%;/*justamente por debajo de la 4ª seccion de viewport*/
+	background-image: url(../img/DSCN1218.jpg);
+	background-size: 100%;
+	background-size: cover;
+	background-position: bottom;
+	z-index: -5;
+	#social-media
+	{
+		border: 1px solid beige;
+		position: absolute;
+		height: 55%;
+		top: 30%;
+		text-align: center;
+		word-spacing: 3px;
+		font-size: 1.5em;
+		text-shadow: 0px 0px 5px #000;
+		h2, h3, p, ul>li
+		{
+			background-color: rgba(250, 250, 250, 0.7);
+			line-height: 1.5em;
+			margin: 5% 0;
+		}
+		h2, h3
+		{
+			padding-top: 10px;
+			margin: 0;
+			background-color: rgba(247, 247, 247, 0.5);
+			color: $blue;
+		}
+		p{
+			width: 95%;
+			margin: 0 auto;
+			border-radius: 5%/10%;
+		}
+		ul>li
+		{
+			font-family: "Socialico";/*ICON-FONTS*/
+			font-size: 3em;
+			margin: 0;
+			height: 110px;
+			transition: all 0.1s ease-out;
+			cursor: pointer;
+			background-color: transparent;
+			color: rgba(250, 250, 250, 1);
+			&:nth-child(2)
+			{
+				margin: 0 6px 0 20px;
+			}
+			&:hover
+			{
+				color: $blue;
+			}
+			a
+			{
+				color: inherit;/*hereda el color del texto de su contenedor*/
+			}
+		}
+	}
+	#google-map
+	{
+		border: 1px solid beige;
 	}
 }
 #contenedor-sliders
@@ -114,7 +180,6 @@ $blue:#3e87cc;
 	top: 200%;/*justamente por debajo de la 2ª seccion de viewport*/
 	left: 0;
 	z-index: -5;/*por detras del encabezado*/
-	font-family: "Calligraffitti";
 	background: transparent url("../img/DSCN1332.jpg") repeat 100%;
 	background-size: cover;
 	.oferta/*<article>*/
@@ -248,11 +313,12 @@ $blue:#3e87cc;
 		h1
 		{
 			margin: 25px 0 0 -50%;
-			font-family: "Calligraffitti";
 		}
 		h2
 		{
-			font: bold 1.5rem/1.5rem "Calligraffitti";
+			font-weight: bold;
+			font-size: 1.5rem;
+			line-height: 1.5rem;
 			margin: -39px 0 0 55%;
 		}
 	}
@@ -308,7 +374,6 @@ $blue:#3e87cc;
 	top: 0;
 	left: 0;
 	margin: 1rem 0 0 10px;
-	font-family: "Calligraffitti";
 	display: none;
 	ul
 	{
@@ -330,6 +395,9 @@ $blue:#3e87cc;
 		text-shadow: 0px 0px 5px #DBAF51, 0px 0px 10px #DBAF51;
 	}
 }
+.callig{
+	font-family: 'Calligraffitti', cursive !important;
+}
 .centerCircle
 {
 	position: absolute;
@@ -339,7 +407,7 @@ $blue:#3e87cc;
 	width: 90px;
 	margin-left: 12px;
 	padding: 50px 50px 60px 31px;
-	font: 1.5em 'Calligraffitti', cursive;
+	font-size: 1.5em;
 	background-color: rgba(0, 0, 0, 0.7);
 	color: #F7F7F7;
 	text-align: center;
@@ -352,10 +420,10 @@ $blue:#3e87cc;
 	display: inline-block;
 	margin-right: -6px;
 	width: 50%;
+	height: 100%;
 	vertical-align: top;
 }
 .halfRooms{
-	height: 100%;
 	overflow: hidden;
 	position: relative;
 	z-index: 0;
@@ -363,7 +431,7 @@ $blue:#3e87cc;
 		@include fullScreen("transparent");
 		position: relative;/*cambiamos el posicionamiento de absolute*/
 		-webkit-filter: grayscale(1) blur(2px);
-		transition:all 0.4s;
+		transition:all 0.4s ease-in-out;
 		&:hover{
 			-webkit-filter: grayscale(0.2) blur(0px);
 		}

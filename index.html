@@ -37,11 +37,11 @@
         <header id="encabezado">
             <a id="logo" href="#">pagina principal del hotel cometa</a>
             <hgroup id="eslogan">
-                <h1>roc hotels</h1>
-                <h2>un paraiso en Mallorca</h2>
+                <h1 class="callig">roc hotels</h1>
+                <h2 class="callig">un paraiso en Mallorca</h2>
             </hgroup>
         </header>
-        <nav id="navHotel">
+        <nav id="navHotel" class="callig">
             <ul>
                 <li><a href="">Inicio</a></li>
                 <li><a href="">Precios</a></li>
@@ -87,7 +87,7 @@
         <!-- TEMPLATE PRESENTACION
         -------------------------------->
         <section id='cuartos' class='fullScreen'>
-            <h1 class='centerCircle callig'>El mejor servicio</h1>
+            <h1 class='centerCircle callig'>El<br/>mejor<br/>servicio</h1>
             <div class="half halfRooms">
                 <img src="img/DSCF0037.jpg">
             </div>
@@ -114,7 +114,7 @@
                 <a href="#" id="regresar-ventana">Regresar</a>
             </article>
         </script>
-        <section id="paquetes">
+        <section id="paquetes" class="callig">
             <article class="oferta">
                 <div class="ribbon"></div>
                 <header>
@@ -154,6 +154,46 @@
             <article class="image-food" data-background="img/DSCF0371.jpg"></article>
             <article class="image-food" data-background="img/DSCF0311.jpg"></article>
             <article class="image-food" data-background="img/DSCF0330.jpg"></article>
+        </section>
+
+        <!-- TEMPLATE GEOLOCALIZAR
+        -------------------------------->
+        <section id="contacto">
+            <article id="social-media" class="half callig" itemscope itemtype="http://data-vocabulary.org/Person">
+                <header>
+                    <h2 class="callig">redes sociales</h2>
+                </header>
+                <ul>
+                    <li><a href="http://www.facebook.com/Riupalacebonanzaplaya" title="Hoteles Bonanza - Facebook" target="_blank" rel="url" itemprop="url">F</a></li>
+                    <li><a rel="external" href="http://ws.hotelsearch.com/offers_mashup.atom?hotelid=&amp;language=es" title="Hoteles Bonanza - RSS" itemprop="url">R</a></li>
+                    <li><a href="http://www.youtube.com/user/HotelesBonanza" title="Hoteles Bonanza - Youtube" target="_blank" rel="url" itemprop="url">X</a></li>
+                </ul>
+                <address>
+                    <h3 class="callig">direccion y telefono</h3>
+                    <p>
+                        <span itemprop="location" itemscope
+                            itemtype="http://schema.org/GeoCoordinates">
+                            <meta itemprop="latitude" content="37.4149" />
+                            <meta itemprop="longitude" content="-122.078" />
+                        </span>
+                    </p>
+                    <p>
+                        <span itemprop="name">hotel riu bonanza playa</span><br/>
+                        <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                            <span itemprop="street-address">Paseo de Illetas s/n</span><br/>
+                            <span itemprop="locality">Calvià</span>
+                            , <span itemprop="region">palma de mallorca</span>, CP:
+                            <span itemprop="postal-code">94043</span>-
+                            <span itemprop="country-name">ES</span>
+                        </span><br/>
+                        <span itemprop="tel">34 971401112 </span>
+                        <a rel="url" itemprop="url" href="mailto:http://www.reservas@hotelesbonanza.com">reservas@hotelesbonanza</a>
+                    </p>
+                </address>
+            </article>
+
+            <article id="google-map" class="half callig">
+            </article>
         </section>
 
     </section>
