@@ -34,6 +34,8 @@ html, body
     max-width:100%;/*nada puede ser mas ancho que la pagina, evitamos el scroll horizontal*/
     margin:0 auto;
     padding: 0;
+    background: transparent url("../img/background.jpg") repeat 100%;
+    background-size: cover;
 }
 html
 {
@@ -116,10 +118,12 @@ img, embed, object, video
    ========================================================================== */
 #contenedor-ppal
 {
+    position: relative;
     width: 90%;/*responsive design, fluid layout*/
-    /*height: se adaptara al contenido*/
-    margin: 0px auto;
+    height: 100%;
+    margin: 0 auto;
     padding: 0;
+    z-index: 100;
     font-size: 16px;
     font-size: 1rem;
 }

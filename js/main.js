@@ -30,19 +30,55 @@ var init = function(){
 	$("#navHotel a").on("click", navegacion);
 	$("#control-sliders ul li").on("click", pasarSlides);
 
-	/*ESPECIFICAR LA DIMENSIONES DE CADA SLIDE*/
 	var widthParent = $("#contenedor-sliders").width();
+	/*AÑADIR EL SLIDE DE <section id="contenedor-sliders">*/
 	$(".slider").each(function(index, item){
-		var uri = $(item).data("background");
-		$(item).css("width", widthParent+"px");
-		$(item).css("background-image", "url('"+uri+"')");
+		addBackground(item, widthParent, true);
+	});
+	/*AÑADIR EL SLIDE DE <section id="buffet">*/
+	$(".image-food").each(function(index, item){
+		addBackground(item, false);/*no le asigno width ni height*/
+		/*para que NO se vea afectado el .viewpot*/
+		if($(item).hasClass('viewport')) return true;/*te lo saltas*/
+		$(item).css({
+			"top": index*130+"px",
+			"right": 20+"px"
+		});
 	});
 
+	/*CAMBIAR VIEWPORT en <section id="buffet">*/
+	$(".image-food").on("click", function(){
+		changeViewport($(this));
+	});
 	/*EFECTO DE FLIP EN CADA ARTICULO*/
 	$("#paquetes").on("click", ".oferta a", flipArticulos);
 
 	/*SLIDER ANIMADO POR INTERVALO DE TIEMPO*/
 	intv = setInterval(pasarSlides, 7000);
+}
+var changeViewport = function(element){
+	var background = $(element).css("background-image");
+	var viewport = $(".viewport");
+	viewport.fadeOut(500, function() {
+		viewport.removeClass('viewport');
+		viewport.css("background-image", background);
+	});
+	viewport.fadeIn(10, function() {
+		viewport.addClass('viewport');
+	});
+}
+var addBackground = function(element, width, setSize)
+{
+	if(!width) width = $("#contenedor-sliders").width();
+	/*no le asignamos el ancho del contenedor, pero lko controlamos con 'setSize'*/
+	if(setSize){
+		$(element).css({
+			"width": width+"px",
+			"height": $("#contenedor-sliders").height()+"px"
+		});
+	}
+	var uri = $(element).data("background");
+	$(element).css("background-image", "url('"+uri+"')");
 }
 var flipArticulos = function(event){
 	event.preventDefault();

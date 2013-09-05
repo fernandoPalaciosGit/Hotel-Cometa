@@ -9,8 +9,10 @@ $blue:#3e87cc;
 	            url("../font/#{$font-face}.otf");
     }
 }
+/*mixin añadido a los <section del #contenedor-ppal>*/
 @mixin fullScreen($color : "aqua")
 {
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -31,12 +33,42 @@ $blue:#3e87cc;
 	-ms-transform: skew(0deg, unquote($grados+"deg"));
 	transform: skew(0deg, unquote($grados+"deg"));
 }
+#buffet
+{
+	@include fullScreen("transparent");
+	top: 300%;/*justamente por debajo de la 3ª seccion de viewport*/
+	position: relative;
+	.image-food
+	{
+		position: absolute;
+		z-index: 1;
+		right: 0;
+		width: 80px;
+		height: 80px;
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+		transition: all 1s ease-in;
+		background-size: 100%;
+		background-position: 50%;
+		cursor: pointer;
+	}
+	.viewport/*la primera imagen que aparece al prinncipio, expandida en el #contenedor-ppal*/
+	{
+		@include fullScreen("transparent");
+		z-index: -1;/*por debajo de .image-food*/
+		left: 0;
+		top: 0;
+		background-size: 100% 100%;
+		background-size: cover;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+		transition: all 1s ease-in;
+		cursor: auto;
+	}
+}
 #contenedor-sliders
 {
-	position: absolute;/*como el #contenedor-ppal (PADRE) NO tiene posicion relativa, su guia-relativa sera el body*/
-	@include fullScreen("blue");
-	background: transparent url("../img/background.png") repeat 100%;
-	background-size: cover;
+	@include fullScreen("transparent");
 	overflow: hidden;
 	top: 0;
 	left: 0;
@@ -50,8 +82,8 @@ $blue:#3e87cc;
 		{
 			display: inline-block;
 			/*siempre se deja un espacio entre los elemnetos que se ponen en inline-block*/
-			position: relative;
 			@include fullScreen("transparent");
+			position: relative;/*cambiamos el posicionamiento de absolute*/
 			margin-right: -6px;
 			vertical-align: top;
 			background-size: 100%;
@@ -72,19 +104,17 @@ $blue:#3e87cc;
 }
 #cuartos{
 	position: absolute;
-	top: 100%;
+	top: 100%;/*justamente por debajo de la 1ª seccion de viewport*/
 	left: 0;
 	z-index: -5;/*por detras del encabezado*/
 }
 #paquetes
 {
 	@include fullScreen("transparent");
-	position: absolute;
-	top: 250%;
+	top: 200%;/*justamente por debajo de la 2ª seccion de viewport*/
 	left: 0;
 	z-index: -5;/*por detras del encabezado*/
 	font-family: "Calligraffitti";
-	border: 1px solid red;
 	background: transparent url("../img/DSCN1332.jpg") repeat 100%;
 	background-size: cover;
 	.oferta/*<article>*/
@@ -330,9 +360,10 @@ $blue:#3e87cc;
 	position: relative;
 	z-index: 0;
 	img{
+		@include fullScreen("transparent");
+		position: relative;/*cambiamos el posicionamiento de absolute*/
 		-webkit-filter: grayscale(1) blur(2px);
 		transition:all 0.4s;
-		width: 100%;
 		&:hover{
 			-webkit-filter: grayscale(0.2) blur(0px);
 		}
