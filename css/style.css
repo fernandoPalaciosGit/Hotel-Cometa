@@ -48,6 +48,12 @@
       si a estos los vamos moviendo el htal,
       AUN ESTARAN OCUPANDO EL total del contenedor padre, y este se encuentra en el medio*/ }
 
+#control-sliders {
+  position: absolute;
+  bottom: 15%;
+  left: 90%;
+  z-index: 0; }
+
 #cuartos {
   position: absolute;
   top: 100%;
@@ -118,6 +124,11 @@
       padding: 0.5rem; }
     #paquetes .oferta .oferta-mas {
       font-weight: bold; }
+      #paquetes .oferta .oferta-mas a {
+        color: #F76161;
+        font-size: 2rem; }
+        #paquetes .oferta .oferta-mas a:hover {
+          text-shadow: 0px 0px 5px #DBAF51, 0px 0px 10px #DBAF51; }
 
 #encabezado {
   position: fixed;
@@ -246,11 +257,11 @@
     #navHotel ul li a {
       color: #f7f7f7; }
 
-#control-sliders {
-  position: absolute;
-  bottom: 15%;
-  left: 90%;
-  z-index: 0; }
+#regresar-ventana {
+  color: #F76161;
+  font-size: 2rem; }
+  #regresar-ventana:hover {
+    text-shadow: 0px 0px 5px #DBAF51, 0px 0px 10px #DBAF51; }
 
 .centerCircle {
   position: absolute;

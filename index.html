@@ -89,36 +89,52 @@
 
         <!-- TEMPLATE COSTES
         -------------------------------->
+        <script type="text/x-jquery-tmpl" id="precioTemplate">
+            <article class="oferta">
+                <div class="ribbon"></div>
+                <header>
+                    <h3 class="oferta-titulo">${paquete}</h3>
+                </header>
+                <p class="oferta-desc">${descripcion}</p>
+                <ol>
+                    {{each opciones}}
+                        <li>${opcion}</li>
+                    {{/each}}
+                </ol>
+                <footer class="oferta-precio">${costo}</footer>
+                <a href="#" id="regresar-ventana">Regresar</a>
+            </article>
+        </script>
         <section id="paquetes">
             <article class="oferta">
                 <div class="ribbon"></div>
                 <header>
                     <h2 class="oferta-titulo">Doble vistas al mar</h2>
                 </header>
-                <p class="oferta-desc">Espaciosas habitaciones diseñadas con mentalidad vanguardista donde sensibilidad y buen gusto protagonizan su interiorismo, disfrute de unas espectaculares vistas al mar desde su amplio balcón. Mide: 26m2</p>
+                <p class="oferta-desc">Comodidad, amplitud, diseño vanguardista… Nuestras habitaciones dobles están equipadas con 2 camas de 1x2m o 1 cama de 1,8x2m y están diseñadas para proporcionar el máximo confort. Ofrecen vistas espectaculares a la Bahía de Palma.</p>
                 <aside class="oferta-ext">Anulación gratis hasta las 12:00</aside>
                 <footer class="oferta-precio">175,00€ por habitacion</footer>
-                <p class="oferta-mas">Tarifa estándar <a href="">Leer más</a></p>
+                <p class="oferta-mas">Tarifa estándar <a href="#" data-number="0">Leer más</a></p>
             </article>
             <article class="oferta">
                 <div class="ribbon"></div>
                 <header>
                     <h2 class="oferta-titulo">Junior Suite</h2>
                 </header>
-                <p class="oferta-desc">Espaciosa Junior Suite de diseño vanguardista donde sensibilidad y buen gusto protagonizan su interiorismo. Dispone de 1 cama de matrimonio (200x200 cm), zona de estar con sofa-cama y cuarto de baño completo con ducha y bañera de diseño muy actual. Disfrute de unas espectaculares vistas al mar desde su terraza.</p>
+                <p class="oferta-desc">Con un diseño moderno y elegante, luminosas y de gran amplitud, las Suites Junior del Hotel Riu Palace Bonanza Playa disponen de un dormitorio con cama de 2x2m y zona de estar incorporada con 1 sofá-cama. Ofrecen espectaculares vistas al mar.</p>
                 <aside class="oferta-ext">No reembolsable, Media Pensión</aside>
                 <footer class="oferta-precio">300,00€ por habitacion</footer>
-                <p class="oferta-mas">Media pensión Gratis! <a href="">Leer más</a></p>
+                <p class="oferta-mas">Media pensión Gratis! <a href="#" data-number="1">Leer más</a></p>
             </article>
             <article class="oferta">
                 <div class="ribbon"></div>
                 <header>
                     <h2 class="oferta-titulo">Suite presidencial</h2>
                 </header>
-                <p class="oferta-desc">Disfrute de su estancia en la moderna y elegante Sénior Suite, con más de 70 m² de habitación y 15 m² de terraza con panorámicas vistas al mar, Dispone de amplio dormitorio matrimonial con cuarto de baño completo en Suite, gran salón de estar y una amplia y soleada terraza. Mide: 76m2</p>
+                <p class="oferta-desc">De gran amplitud y luminosidad, las Suites Presidenciales disponen de un salón independiente con sofá-cama y de una espectacular terraza de 15m2 con magníficas vistas panorámicas al mar. El dormitorio cuenta con 1 cama de 2x2m y baño completo.</p>
                 <aside class="oferta-ext">No reembolsable   Media Pensión</aside>
                 <footer class="oferta-precio">350,00€ por habitacion</footer>
-                <p class="oferta-mas">Media pensión Gratis! <a href="">Leer más</a></p>
+                <p class="oferta-mas">Media pensión Gratis! <a href="#" data-number="2">Leer más</a></p>
             </article>
         </section>
 
@@ -137,7 +153,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- si el CDN falla, se carga desde el servidor cliente -->
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+    <!-- libria de templates -->
+    <script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'></script>
+    <!-- PLUGINS JQUERY -->
     <script src="js/plugins.js"></script>
+    <script src="js/vendor/jquery.ui.core.min.js"></script> <!-- trabajar con interfaces moviles -->
+    <script src="js/vendor/jquery.ui.effect.min.js"></script> <!-- cambio de color cuando se le da flip a la targeta -->
+    <script src="js/vendor/jquery.flip.min.js"></script><!-- efecto de rotacion de targetas -->
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -63,6 +63,13 @@ $blue:#3e87cc;
 		}
 	}
 }
+#control-sliders
+{
+	position: absolute;
+	bottom: 15%;
+	left: 90%;
+	z-index: 0;
+}
 #cuartos{
 	position: absolute;
 	top: 100%;
@@ -144,6 +151,15 @@ $blue:#3e87cc;
 		.oferta-mas
 		{
 			font-weight: bold;
+			a
+			{
+				color: #F76161;
+				font-size: 2rem;
+				&:hover
+				{
+					text-shadow: 0px 0px 5px #DBAF51, 0px 0px 10px #DBAF51;
+				}
+			}
 		}
 	}
 }
@@ -275,12 +291,14 @@ $blue:#3e87cc;
 		}
 	}
 }
-#control-sliders
+#regresar-ventana
 {
-	position: absolute;
-	bottom: 15%;
-	left: 90%;
-	z-index: 0;
+	color: #F76161;
+	font-size: 2rem;
+	&:hover
+	{
+		text-shadow: 0px 0px 5px #DBAF51, 0px 0px 10px #DBAF51;
+	}
 }
 .centerCircle
 {
