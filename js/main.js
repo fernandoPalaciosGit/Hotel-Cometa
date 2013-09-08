@@ -14,10 +14,14 @@ var opcionesPaquetes = [
 		{opcion:'2 terrazas con vistas al mar'}, {opcion:'Salón separado'}, {opcion:'Internet Wi-Fi (gratis)'}
 	],costo: '350$',paquete:'Suites presidenciales', descripcion:'Disfrute de su estancia en la moderna y elegante Sénior Suite, con más de 70 m² de habitación y 15 m² de terraza con panorámicas vistas al mar, Dispone de amplio dormitorio matrimonial con cuarto de baño completo en Suite, gran salón de estar y una amplia y soleada terraza. Mide: 76m2.'}
 ];
-$(document).ready(function(){
+
+$(document).ready(function()
+{
 	init();
 });
-var init = function(){
+
+var init = function()
+{
 	if(window.innerWidth <= 480){
 		$("#navHotel").fadeIn();
 	}else if(window.innerWidth > 480){
@@ -56,7 +60,9 @@ var init = function(){
 	/*SLIDER ANIMADO POR INTERVALO DE TIEMPO*/
 	intv = setInterval(pasarSlides, 7000);
 }
-var changeViewport = function(element){
+
+var changeViewport = function(element)
+{
 	var background = $(element).css("background-image");
 	var viewport = $(".viewport");
 	viewport.fadeOut(500, function() {
@@ -67,6 +73,7 @@ var changeViewport = function(element){
 		viewport.addClass('viewport');
 	});
 }
+
 var addBackground = function(element, width, setSize)
 {
 	if(!width) width = $("#contenedor-sliders").width();
@@ -80,7 +87,9 @@ var addBackground = function(element, width, setSize)
 	var uri = $(element).data("background");
 	$(element).css("background-image", "url('"+uri+"')");
 }
-var flipArticulos = function(event){
+
+var flipArticulos = function(event)
+{
 	event.preventDefault();
 	if(flippedArt != null){/*esta girado*/
 		$(flippedArt).revertFlip();
@@ -106,7 +115,9 @@ var flipArticulos = function(event){
 		}
 	});
 }
-var pasarSlides = function(){
+
+var pasarSlides = function()
+{
 	var slideTarget = 0;
 	/*¿se paso por un intervalo (TIEMPO) o por un boton (CLICK)?*/
 	if($(this).closest("#control-sliders").hasClass("pasar-slide")){
@@ -129,9 +140,10 @@ var pasarSlides = function(){
 			$(this).fadeIn();
 		});
 	});
-
 }
-var rolloverHeader = function(event){
+
+var rolloverHeader = function(event)
+{
 	if(window.innerWidth <= 480){
 		return;
 	}
@@ -141,7 +153,9 @@ var rolloverHeader = function(event){
 		$("#eslogan").fadeOut();
 	}
 }
-var navegacion = function(event){
+
+var navegacion = function(event)
+{
 	if(window.innerWidth <= 480){
 		return;
 	}

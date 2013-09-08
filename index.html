@@ -193,6 +193,9 @@
             </article>
 
             <article id="google-map" class="half callig">
+                <input type="button" id="miDireccion" value="Localizame !!" />
+                <input type="button" id="mostrarRuta" value="mostrar ruta" />
+                <div id="map-canvas"></div>
             </article>
         </section>
 
@@ -201,7 +204,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- si el CDN falla, se carga desde el servidor cliente -->
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-    <!-- libria de templates -->
+    <!-- libreria de templates -->
     <script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'></script>
     <!-- PLUGINS JQUERY -->
     <script src="js/plugins.js"></script>
@@ -209,5 +212,10 @@
     <script src="js/vendor/jquery.ui.effect.min.js"></script> <!-- cambio de color cuando se le da flip a la targeta -->
     <script src="js/vendor/jquery.flip.min.js"></script><!-- efecto de rotacion de targetas -->
     <script src="js/main.js"></script>
+    <!-- api de google maps -->
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDyZdH1B33aDCFhEdpwzSwhh7pKu11qMKo&amp;sensor=false">
+    </script>
+    <script src="js/mainMaps.js"></script>
 </body>
 </html>
