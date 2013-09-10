@@ -14,21 +14,37 @@ var opcionesPaquetes = [
 		{opcion:'2 terrazas con vistas al mar'}, {opcion:'Salón separado'}, {opcion:'Internet Wi-Fi (gratis)'}
 	],costo: '350$',paquete:'Suites presidenciales', descripcion:'Disfrute de su estancia en la moderna y elegante Sénior Suite, con más de 70 m² de habitación y 15 m² de terraza con panorámicas vistas al mar, Dispone de amplio dormitorio matrimonial con cuarto de baño completo en Suite, gran salón de estar y una amplia y soleada terraza. Mide: 76m2.'}
 ];
-$(document).ready(function()
-{
-	$(window).on("resize", function()
-	{
-		window.setTimeout(function(){
-			var widthParent = $("#contenedor-sliders").width();
-			$(".slider").each(function(index, item){
-				addBackground(item, widthParent, true);
-			});
-			pasarSlides();
-			clearInterval(intv);
-			intv = setInterval(pasarSlides, 7000);
-		}, 1500);
-	});
 
+$(document).ready(function(){
+	init();
+});
+
+window.addEventListener("orientationchange", init);
+
+$(window).on("resize", function()
+{
+	if(window.innerWidth <= 768)
+	{
+		$("#contacto").prepend($("#google-map"));
+		$("#google-map").prepend($("#map-canvas"));
+	}else{
+		$("#contacto").append($("#google-map"));
+		$("#google-map").append($("#map-canvas"));
+	}
+	clearInterval(intv);
+	window.setTimeout(function(){
+		var widthParent = $("#contenedor-sliders").width();
+		$(".slider").each(function(index, item){
+			addBackground(item, widthParent, true);
+		});
+		pasarSlides();
+		clearInterval(intv);
+		intv = setInterval(pasarSlides, 7000);
+	}, 1500);
+});
+
+var init = function()
+{
 	/*por la cache asigna otraseccion de pagin, cargamos el inicio de la pagin*/
 	if(document.location.pathname != "/%23contenedor-sliders/"){
 		document.location.href = "/Hotel Cometa/#/";
@@ -37,17 +53,21 @@ $(document).ready(function()
 	/*desabilitar el scroll vertical*/
 	document.body.style.overflow = "hidden";
 
-	if(window.innerWidth <= 480){
-		$("#navHotel").fadeIn();
-	}else if(window.innerWidth > 480){
-		$("#navHotel").fadeOut();
+	if(window.innerWidth <= 768){
+		$("#navHotel").show();
+	}else if(window.innerWidth > 768){
+		$("#navHotel").hide();
 	}
+
+	/*efecto PARALAX, libreria stelar, configurarar las velocidades a traeves de data()*/
 	if(window.innerWidth > 768){
-		/*efecto PARALAX, libreria stelar, configurarar las velocidades a traeves de data()*/
 		$.stellar({
 			"horizontalScrolling": false,
 			"hideDistantElements": false
 		});
+	}else{
+		$("#contacto").prepend($("#google-map"));
+		$("#google-map").prepend($("#map-canvas"));
 	}
 
 	/*EVENTOS MOUSE*/
@@ -91,16 +111,19 @@ $(document).ready(function()
 	$(".image-food").on("click", function(){
 		changeViewport($(this));
 	});
-	/*EFECTO DE FLIP EN CADA ARTICULO*/
-	$("#paquetes").on("click", ".oferta a", flipArticulos);
 
+	/*EFECTO DE FLIP EN CADA ARTICULO*/
+	if(window.innerWidth > 768){
+		$("#paquetes").on("click", ".oferta a", flipArticulos);
+	}else{
+		$(".oferta-mas").find("a").remove();
+	}
 	/*SLIDER ANIMADO POR INTERVALO DE TIEMPO*/
 	intv = setInterval(pasarSlides, 7000);
 
 	/*LOCALSCROLL*/
 	$("#navHotel").children('ul').localScroll();
-
-});
+};
 
 var changeViewport = function(element)
 {
@@ -185,7 +208,7 @@ var pasarSlides = function()
 
 var handlerIn = function(event)
 {
-	if(window.innerWidth <= 480){
+	if(window.innerWidth <= 768){
 		return;
 	}
 	$(this).css({"margin-top" : "-7rem"});
@@ -195,7 +218,7 @@ var handlerIn = function(event)
 
 var handlerOut = function(event)
 {
-	if(window.innerWidth <= 480){
+	if(window.innerWidth <= 768){
 		return;
 	}
 	$(this).css({"margin-top" : "-10rem"});
