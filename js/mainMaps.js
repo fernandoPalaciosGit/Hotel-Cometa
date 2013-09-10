@@ -1,7 +1,42 @@
 var map, marker, geolocalizacion;
 var mapaExt, geoExtCasa, geoExtHotel;
 var coords = {lat: "", long: ""};
-window.onload = init;/*cuando ya se hayan carggado todos los elementos del DOM*/
+
+// este callback se llama desde la peticon al al api de google maps
+var initMap = function(){
+  var element = document.getElementById('map-canvas');
+  coords = {lat: 39.541000, long: 2.593500};
+  geoEspecifico(element, coords);
+
+  /*mostrar mi casa*/
+  $("#miDireccion").on("click", function(){
+      mapaExt.setCenter(geoExtCasa);
+      $(this).fadeOut();
+      $("#mostrarRuta").fadeIn();
+  });
+
+  /*marcar la ruta*/
+  $("#mostrarRuta").on("click", function(){
+    mapaExt.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+    var directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(mapaExt);
+
+    var request = {
+      origin : geoExtCasa,
+      destination: geoExtHotel,
+      travelMode: google.maps.DirectionsTravelMode.DRIVING/*definir el modo en el que el usuario va a viajar en la ruta*/
+    };
+
+    directionsService.route(request, function(response, status){
+      if(status == google.maps.DirectionsStatus.OK){/*comprobar la peticion devuelta correctamente*/
+        directionsRenderer.setDirections(response);
+      }
+    });
+
+    $(this).val("centrar mapa");
+  });
+};
 
 /*valores iniciales del mapa*/
 /*ROADMAP, SATELLITE, HYBRID, TERRAIN*/
@@ -85,40 +120,4 @@ var errorLocalizar = function(error)
 {
   alert("Tarde o temprano te encontrare ¬_¬");
   console.log(error);
-};
-
-
-var init = function()
-{
-  var element = document.getElementById('map-canvas');
-  coords = {lat: 39.541000, long: 2.593500};
-  geoEspecifico(element, coords);
-
-  /*mostrar mi casa*/
-  $("#miDireccion").on("click", function(){
-      mapaExt.setCenter(geoExtCasa);
-      $(this).fadeOut();
-      $("#mostrarRuta").fadeIn();
-  });
-
-  /*marcar la ruta*/
-  $("#mostrarRuta").on("click", function(){
-    mapaExt.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-    var directionsService = new google.maps.DirectionsService();
-    var directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(mapaExt);
-
-    var request = {
-      origin : geoExtCasa,
-      destination: geoExtHotel,
-      travelMode: google.maps.DirectionsTravelMode.DRIVING/*definir el modo en el que el usuario va a viajar en la ruta*/
-    };
-
-    directionsService.route(request, function(response, status){
-      if(status == google.maps.DirectionsStatus.OK){/*comprobar la peticion devuelta correctamente*/
-        directionsRenderer.setDirections(response);
-      }
-    });
-
-  });
 };

@@ -9,6 +9,11 @@ $blue:#3e87cc;
 	            url("../font/#{$font-face}.otf");
     }
 }
+@mixin imgMovil($url)
+{
+	background-image: url(unquote($url));
+	background-size: auto 100%;/*las imagenes en los moviles tienden a fijarse a lo alto y auto a lo anxho*/
+}
 /*mixin añadido a los <section del #contenedor-ppal>*/
 @mixin fullScreen($color : "aqua")
 {
@@ -18,6 +23,7 @@ $blue:#3e87cc;
 	margin: 0;
 	padding: 0;
 	background-color: unquote($color);
+	background-attachment: fixed;
 }
 @mixin efectoEncabezado($grados, $color : "red")/*grupo de reglas css para varios elementos -- pueden recibir parametros opr mixin*/
 {
@@ -60,6 +66,7 @@ $blue:#3e87cc;
 		top: 0;
 		background-size: 100% 100%;
 		background-size: cover;
+		background-attachment: scroll;
 		-webkit-border-radius: 0;
 		border-radius: 0;
 		transition: all 1s ease-in;
@@ -68,7 +75,7 @@ $blue:#3e87cc;
 }
 #contacto
 {
-	@include fullScreen("red");
+	@include fullScreen("transparent");
 	top: 400%;/*justamente por debajo de la 4ª seccion de viewport*/
 	background-image: url(../img/DSCN1218.jpg);
 	background-size: 100%;
@@ -131,6 +138,14 @@ $blue:#3e87cc;
 				color: inherit;/*hereda el color del texto de su contenedor*/
 			}
 		}
+		address
+		{
+			font-size: 0.75em;
+			p
+			{
+				line-height: 2em;
+			}
+		}
 	}
 	#google-map
 	{
@@ -140,7 +155,6 @@ $blue:#3e87cc;
 		text-align: center;
 		#map-canvas
 		{
-			border: 1px solid beige;
 			width: 100%;
 			height: 100%;
 			margin-left: 2%;
@@ -151,6 +165,33 @@ $blue:#3e87cc;
 		#mostrarRuta
 		{
 			display: none;
+		}
+		input
+		{
+			display: block;
+			width: 103%;
+			width: calc(100% + 0.75em);
+			height: 11%;
+			margin: 0 0 0 2%;
+			padding: 0em 1em;
+			font-size: 1.3em;
+			border: none;
+			background-color: rgba(247, 247, 247, 0.5);
+			color: #3E87CC;
+			text-align: center;
+			transition: background-color 0.3s linear 0s,
+							color 0.3s linear 0s;
+			font-weight: bold;
+			&:hover
+			{
+				background-color: rgba(255, 255, 255, 0.9);
+				color: #36383A;
+			}
+			&:active
+			{
+				border: 0.2em solid #F76D6D;
+				border-radius: 0.5em/0.7em;
+			}
 		}
 	}
 }
@@ -345,12 +386,28 @@ $blue:#3e87cc;
 		}
 	}
 }
+#logo
+{
+	display: block;
+	position: fixed;
+	bottom: 0px;
+	background: rgb(0, 0, 0) url(../img/logo_cometa.png) no-repeat center center;
+	background-position-y: 40%;
+	text-indent: -99999px;
+	background-size: 70%;
+	width: 160px;
+	height: 160px;
+	border-radius: 0 7em;
+}
 #msg-ppal
 {
 	@include fullScreen("transparent");
-	margin-left: -5%;
 	width: 500px;
-	padding-top: 325px;
+	height: 15%;
+	top: 42%;
+	top: calc(50% - 75px);
+	left: 0;
+	margin-left: -5%;
 	color: #f7f7f7;
 	h1
 	{
@@ -386,22 +443,34 @@ $blue:#3e87cc;
 			border-left: 300px solid #000;
 			border-bottom: 150px solid transparent;
 		}
+		a
+		{
+			color: rgba(255, 255, 255, 0.75);
+			font-style: italic;
+			font-weight: normal;
+			&:hover
+			{
+				color: rgba(62, 135, 204, 0.75);
+			}
+		}
 	}
 }
 #navHotel
 {
-	position: fixed;
+	position: absolute;
 	width: 100%;/*sera el 90% del view-port*/
 	height: 50px;/*los pseudoelementos adoptaran esta altura*/
 	top: 0;
 	left: 0;
-	margin: 1rem 0 0 10px;
-	display: none;
+	margin-top: 8rem;
+	z-index: 2000;
 	ul
 	{
-		width: 630px;/*RESPONSIVE*/
+		width: 550px;/*RESPONSIVE*/
 		height: 100%;
 		margin: 0 auto;
+		margin-left: 30%;
+		margin-left: calc(50% - 250px);
 		li a
 		{
 			color: #f7f7f7;
@@ -452,17 +521,18 @@ $blue:#3e87cc;
 	img{
 		@include fullScreen("transparent");
 		position: relative;/*cambiamos el posicionamiento de absolute*/
-		-webkit-filter: grayscale(1) blur(2px);
+		z-index: -15;
 		transition:all 0.4s ease-in-out;
-		&:hover{
-			-webkit-filter: grayscale(0.2) blur(0px);
+		&:hover
+		{
+			-webkit-filter: grayscale(1) blur(2px);
 		}
 	}
 }
 @media screen and (max-width: 1024px){
 	#contenedor-ppal
 	{
-		background-color: red;
+
 	}
 	#encabezado
 	{
@@ -506,9 +576,13 @@ $blue:#3e87cc;
 	}
 }
 @media screen and (max-width: 768px){
+	#contacto
+	{
+		@include imgMovil("../img/DSCN1218-movil.jpg");
+	}
 	#contenedor-ppal
 	{
-		background-color: green;
+
 	}
 	#encabezado
 	{
@@ -556,6 +630,10 @@ $blue:#3e87cc;
 			}
 		}
 	}
+	#paquetes
+	{
+		@include imgMovil("../img/DSCN1332-movil.jpg");
+	}
 	.centerCircle
 	{
 		position: absolute;
@@ -578,7 +656,7 @@ $blue:#3e87cc;
 @media screen and (max-width: 480px){
 	#contenedor-ppal
 	{
-		background-color: beige;
+
 		#encabezado
 		{
 			margin-top: -7rem;
